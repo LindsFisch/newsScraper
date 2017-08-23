@@ -30,6 +30,7 @@ router.post("/articles/:id", function(req, res){
 
 });
 
+//delete note
 router.delete("/articles/:id", function(req, res){
 
 });
