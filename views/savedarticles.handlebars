@@ -5,8 +5,9 @@
         <div class="card-block">
             <h4 class="card-title">{{this.title}}</h4>
             <p><a href="{{this.link}}" target="_blank">See Full Article</a></p>
-            <a href="/delete/{{this.id}}" class="btn btn-primary">Delete</a>
-            <a href="/save/{{this.id}}" class=="btn btn-primary">Add Comment</a>
+            <a href="/delete/{{this.id}}" class="float-left btn btn-primary">Delete</a>
+            <button type="button" data-toggle="modal" data-target="#myModal" class="float-right btn btn-primary newNote" data-value="{{this.id}}">Add a Note</button>
+
         </div>
     </div>
     {{/each}}{{else}}
@@ -14,4 +15,32 @@
         <strong>Oh snap!</strong> You haven't saved any articles yet!
     </div>
     {{/if}}
+
+
+    <!-- Modal -->
+    <div id="myModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Notes</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="oldNotes"></div>
+                    <form class="newForm">
+                    <div class="form-group">
+                        <label for="exampleTextarea">Add Your Comment</label>
+                        <textarea class="form-control" id="bodyInput" rows="3"></textarea>
+                    </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
 </div>

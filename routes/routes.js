@@ -19,10 +19,31 @@ router.get("/", function (req, res) {
     });
 });
 
+
 //scrape articles from FloridaMan
 router.get("/scrape", function (req, res) {
     scraper.scrapeWeb(function () {
         res.redirect('/');
+    });
+});
+
+//save article to save page
+router.get("/save/:id", function (req, res) {
+    Article.findById(req.params.id, function (err, doc) {
+        if (err) {
+            console.log(err);
+        } else {
+            //change save to false
+            doc.saved = true;
+
+            doc.save(function (error, update) {
+                if (error) {
+                    console.log(error);
+                } else {
+                    res.redirect('/');
+                }
+            });
+        }
     });
 });
 
@@ -42,7 +63,7 @@ router.get("/save", function (req, res) {
 });
 
 //get specific article by id for note
-router.get("/save/:id", function (req, res) {
+router.get("/new/:id", function (req, res) {
     Article.findOne({ "_id": req.params.id })
         .populate("note")
         .exec(function (error, doc) {
@@ -55,7 +76,7 @@ router.get("/save/:id", function (req, res) {
 });
 
 //create new note or replace
-router.post("/save/:id", function (req, res) {
+router.post("/new/:id", function (req, res) {
 
     var newNote = new Note(req.body);
 
@@ -69,13 +90,14 @@ router.post("/save/:id", function (req, res) {
                         console.log(err);
                     } else {
                         res.send(doc);
+                        
                     }
                 });
         }
     });
 });
 
-//delete article
+//delete article from saved
 router.get("/delete/:id", function (req, res) {
     Article.findById(req.params.id, function (err, doc) {
         if (err) {
