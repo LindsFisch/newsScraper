@@ -38,7 +38,6 @@ var scrapeWeb = function () {
         });
     });
 
-    res.send("Scrape Complete");
 };
 
-module.exports = scrapeWeb;
+exports.scrapeWeb = scrapeWeb;

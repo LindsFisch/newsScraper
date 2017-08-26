@@ -11,7 +11,10 @@ router.get("/", function (req, res) {
         if (error) {
             console.log(error);
         } else {
-            res.json(doc);
+            var hbsObject = {
+                article: doc
+              };
+              res.render("index", hbsObject);
         }
     });
 });
@@ -25,13 +28,16 @@ router.get("/scrape", function (req, res) {
 
 //get articles that were saved
 router.get("/save", function (req, res) {
-    Article.find({ save: 1 }, function (error, doc) {
+    Article.find({ "saved": 1 }, function (error, doc) {
         if (error) {
             console.log(error);
         } else {
-            res.json(doc);
+            var hbsObject = {
+                article: doc
+              };
+              res.render("savedarticles", hbsObject);
         }
-    })
+    });
 
 });
 
@@ -71,7 +77,7 @@ router.post("/save/:id", function (req, res) {
 
 //delete article
 router.post("/delete/:id", function (req, res) {
-    Article.findOneAndUpdate({"_id": req.params.id}, {"save": 0})
+    Article.findOneAndUpdate({"_id": req.params.id}, {"saved": 0})
     .exec(function(err, doc){
         if (err) {
             console.log(err);
