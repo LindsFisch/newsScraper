@@ -1,0 +1,15 @@
+<div class="container">
+    <h1>Your Florida Man News</h1>
+    {{#if article}} {{#each article}}
+    <div class="card">
+        <div class="card-block">
+            <h4 class="card-title"><a href="{{this.link}}" target="_blank">{{this.title}}</a></h4>
+            <a href="/save/{{this.id}}" class="btn btn-primary">Save</a>
+        </div>
+    </div>
+    {{/each}}{{else}}
+    <div class="alert alert-danger" role="alert">
+        <strong>Oh snap!</strong> You haven't scraped any articles yet!
+    </div>
+    {{/if}}
+</div>
