@@ -3,7 +3,8 @@
     {{#if article}} {{#each article}}
     <div class="card">
         <div class="card-block">
-            <h4 class="card-title"><a href="{{this.link}}" target="_blank">{{this.title}}</a></h4>
+            <h4 class="card-title">{{this.title}}</h4>
+            <p><a href="{{this.link}}" target="_blank">See Full Article</a></p>
             <a href="/delete/{{this.id}}" class="btn btn-primary">Delete</a>
             <a href="/save/{{this.id}}" class=="btn btn-primary">Add Comment</a>
         </div>

@@ -3,8 +3,9 @@
     {{#if article}} {{#each article}}
     <div class="card">
         <div class="card-block">
-            <h4 class="card-title"><a href="{{this.link}}" target="_blank">{{this.title}}</a></h4>
-            <a href="/save/{{this.id}}" class="btn btn-primary">Save</a>
+            <h4 class="card-title">{{this.title}}</h4>
+            <p><a href="{{this.link}}" target="_blank">See Full Article</a></p>
+            <a href="/save/{{this.id}}" class="float-right btn btn-primary">Save</a>
         </div>
     </div>
     {{/each}}{{else}}

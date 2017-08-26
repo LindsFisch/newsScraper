@@ -13,8 +13,8 @@ router.get("/", function (req, res) {
         } else {
             var hbsObject = {
                 article: doc
-              };
-              res.render("index", hbsObject);
+            };
+            res.render("index", hbsObject);
         }
     });
 });
@@ -34,8 +34,8 @@ router.get("/save", function (req, res) {
         } else {
             var hbsObject = {
                 article: doc
-              };
-              res.render("savedarticles", hbsObject);
+            };
+            res.render("savedarticles", hbsObject);
         }
     });
 
@@ -43,15 +43,15 @@ router.get("/save", function (req, res) {
 
 //get specific article by id for note
 router.get("/save/:id", function (req, res) {
-    Article.findOne({"_id": req.params.id})
-    .populate("note")
-    .exec(function(error, doc){
-        if (error) {
-            console.log(error);
-        } else {
-            res.json(doc);
-        }
-    });
+    Article.findOne({ "_id": req.params.id })
+        .populate("note")
+        .exec(function (error, doc) {
+            if (error) {
+                console.log(error);
+            } else {
+                res.json(doc);
+            }
+        });
 });
 
 //create new note or replace
@@ -76,24 +76,23 @@ router.post("/save/:id", function (req, res) {
 });
 
 //delete article
-router.post("/delete/:id", function (req, res) {
-    Article.findOneAndUpdate({"_id": req.params.id}, {"saved": 0})
-    .exec(function(err, doc){
+router.get("/delete/:id", function (req, res) {
+    Article.findById(req.params.id, function (err, doc) {
         if (err) {
             console.log(err);
         } else {
-            res.send(doc);
+            //change save to false
+            doc.saved = 0;
+
+            doc.save(function (error, update) {
+                if (error) {
+                    console.log(error);
+                } else {
+                    res.redirect('/save');
+                }
+            });
         }
     });
-
-    Article.save(function(error, update){
-        if (error) {
-            console.log(error);
-        } else {
-            res.redirect('/save');
-        }
-    });
-
 });
 
 
