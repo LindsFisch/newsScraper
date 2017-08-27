@@ -1,2 +1,7 @@
 # newsScraper
-Web Scraper using ExpressJs, MongooseJs, CheerioJs, and Materialize
+Web Scraper that allows a user to scrape articles from Florida Man.  After articles are scraped, user can save articles.  Saved articles will populate on the saved articles page.  
+
+From the save articles page, user can add a note and view notes that have already been written on articles. User can also remove article from the save page. 
+
+###Technologies Utilized
+MongoDB, MongooseJS, CheerioJS, ExpressJS, NodeJS, HandlebarsJS
