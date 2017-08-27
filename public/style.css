@@ -4,4 +4,12 @@
 
 .txthead {
     margin: 30px;
+    color: white;
+}
+
+body {
+    background-image: url('everglades.jpg');
+    background-attachment: fixed;
+    background-size: cover;
+
 }
