@@ -6,6 +6,7 @@ var Article = require("../models/Article");
 
 var scrapeWeb = function (callback) {
 
+
     var website = "http://floridaman.com";
 
     request(website, function (error, response, html) {
@@ -22,7 +23,6 @@ var scrapeWeb = function (callback) {
             result.link = $(this).children("a").attr("href");
 
             var entry = new Article(result);
-
 
             entry.save(function (err, doc) {
  
