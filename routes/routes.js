@@ -22,8 +22,9 @@ router.get("/", function (req, res) {
 
 //scrape articles from FloridaMan
 router.get("/scrape", function (req, res) {
-    scraper.scrapeWeb(function () {
-        res.redirect('/');
+    scraper.scrapeWeb(function(data) {
+        console.log(data);
+        res.redirect("/");
     });
 });
 
@@ -40,7 +41,7 @@ router.get("/save/:id", function (req, res) {
                 if (error) {
                     console.log(error);
                 } else {
-                    res.redirect('/');
+                    res.redirect('/save');
                 }
             });
         }

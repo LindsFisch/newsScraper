@@ -4,7 +4,7 @@ var request = require("request");
 
 var Article = require("../models/Article");
 
-var scrapeWeb = function () {
+var scrapeWeb = function (callback) {
 
     var website = "http://floridaman.com";
 
@@ -36,6 +36,7 @@ var scrapeWeb = function () {
             });
 
         });
+        callback();
     });
 
 };

@@ -1,13 +1,18 @@
 <div class="container">
-    <h1>Your Saved News</h1>
+    <h1 class="text-center txthead">Your Saved News</h1>
     {{#if article}} {{#each article}}
-    <div class="card">
+    <div class="card displayarticle">
         <div class="card-block">
             <h4 class="card-title">{{this.title}}</h4>
-            <p><a href="{{this.link}}" target="_blank">See Full Article</a></p>
-            <a href="/delete/{{this.id}}" class="float-left btn btn-primary">Delete</a>
-            <button type="button" data-toggle="modal" data-target="#myModal" class="float-right btn btn-primary newNote" data-value="{{this.id}}">Add a Note</button>
-
+            <div class="row">
+                <div class="col-md-6">
+                    <p><a href="{{this.link}}" target="_blank">See Full Article</a></p>
+                </div>
+                <div class="col-md-6">
+                    <a href="/delete/{{this.id}}" class="float-right btn btn-danger">Delete</a>
+                    <button type="button" data-toggle="modal" data-target="#myModal" class="float-right btn btn-primary newNote" data-value="{{this.id}}">Add a Note</button>
+                </div>
+            </div>
         </div>
     </div>
     {{/each}}{{else}}
@@ -30,10 +35,10 @@
                 <div class="modal-body">
                     <div class="oldNotes"></div>
                     <form class="newForm">
-                    <div class="form-group">
-                        <label for="exampleTextarea">Add Your Comment</label>
-                        <textarea class="form-control" id="bodyInput" rows="3"></textarea>
-                    </div>
+                        <div class="form-group">
+                            <label for="exampleTextarea">Add Your Comment</label>
+                            <textarea class="form-control" id="bodyInput" rows="3"></textarea>
+                        </div>
                     </form>
                 </div>
                 <div class="modal-footer">

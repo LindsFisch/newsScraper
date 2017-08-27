@@ -1,11 +1,17 @@
 <div class="container">
-    <h1>Your Florida Man News</h1>
+    <h1 class="text-center txthead">Recent Florida Man News</h1>
     {{#if article}} {{#each article}}
-    <div class="card">
+    <div class="card displayarticle">
         <div class="card-block">
             <h4 class="card-title">{{this.title}}</h4>
-            <p><a href="{{this.link}}" target="_blank">See Full Article</a></p>
-            <a href="/save/{{this.id}}" class="float-right btn btn-primary">Save</a>
+            <div class="row">
+                <div class="col-md-6">
+                    <p><a href="{{this.link}}" target="_blank">See Full Article</a></p>
+                </div>
+                <div class="col-md-6">
+                    <a href="/save/{{this.id}}" class="float-right btn btn-primary align-middle">Save</a>
+                </div>
+            </div>
         </div>
     </div>
     {{/each}}{{else}}
