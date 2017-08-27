@@ -3,5 +3,7 @@ Web Scraper that allows a user to scrape articles from Florida Man.  After artic
 
 From the save articles page, user can add a note and view notes that have already been written on articles. User can also remove article from the save page. 
 
+Deployed on Herko https://flmanscrape.herokuapp.com/
+
 ### Technologies Utilized
 MongoDB, MongooseJS, CheerioJS, ExpressJS, NodeJS, HandlebarsJS
